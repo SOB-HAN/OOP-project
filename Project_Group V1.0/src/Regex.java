@@ -16,6 +16,8 @@ public enum Regex {
     CHANGE_USER("^\\s*Profile\\s+change\\s+-u\\s+(?<username>\\S+)\\s*$"),
     CHANGE_NICKNAME("^\\s*Profile\\s+change\\s+-n\\s+(?<nickname>\\S+)\\s*$"),
     CHANGE_EMAIL("^\\s*Profile\\s+change\\s+-e\\s+(?<Email>\\S+)\\s*$"),
+    CHANGE_PASSWORD("^\\s*profile\\s+change\\s+password\\s+-o\\s+(?<oldPassword>\\S+)\\s+-n\\s+(?<newPassword>\\S+)\\s*$"),
+
     //****************************************************Profile Menu Regexes******************************************
     //****************************************************Shop Menu Regexes*********************************************
 

@@ -56,6 +56,34 @@ public class ProfileMenu {
             System.out.println("Email changed to "+user.getEmail()+" !");
         }
     }
+    public static void changePassword(User user,String oldPassword,String newPassword,Scanner scanner){
+        if(!user.isCorrectPassword(oldPassword)){
+            //replace in phase 2
+            System.out.println("Current password is incorrect!");
+        }
+        else if(UserFunctions.isWeakPassword(newPassword)==1){
+            System.out.println("new password too short! (must contain at least 8 characters)");
+        }
+        else if(UserFunctions.isWeakPassword(newPassword)==2){
+            System.out.println("new password must contain at least 1 CAPITAL letter,1 small letter and 1 special character!");
+        }
+        else if(oldPassword.equals(newPassword)){
+            System.out.println("Please enter a new password!");
+        }
+        else{
+            //captcha here
+            System.out.println("Please enter your new password again:");
+            String newPasswordConfirm=scanner.nextLine();
+            if(newPasswordConfirm.equals(newPassword)){
+                user.setPassword(newPassword);
+                System.out.println("Password changed successfully!");
+            }
+            else{
+                System.out.println("Password confirmation failed!");
+            }
+
+        }
+    }
     //******************************************************************************************************************
     public static void  run(Scanner scanner,User user) {
         String tempInput = null;
@@ -90,6 +118,9 @@ public class ProfileMenu {
                 changeEmail(user,Regex.CHANGE_EMAIL.getGroup(tempInput,"Email"));
             }
             //*********************************************change password**********************************************
+            else if(tempInput.matches(Regex.CHANGE_PASSWORD.regex)){
+                changePassword(user,Regex.CHANGE_PASSWORD.getGroup(tempInput,"oldPassword"),Regex.CHANGE_PASSWORD.getGroup(tempInput,"newPassword"),scanner);
+            }
             //more ifs
             else{
                 System.out.println("invalid input");

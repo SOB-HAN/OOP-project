@@ -3,7 +3,7 @@ public class UserFunctions {
         if(string==null){
             return true;
         }
-        else if(string.isEmpty()){
+        else if(string.matches("^\\s+$")){
             return true;
         }
         return false;

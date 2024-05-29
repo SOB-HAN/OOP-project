@@ -38,7 +38,7 @@ public class ProfileMenu {
             System.out.println("nickname changed to "+user.getNickname()+" !");
         }
     }
-    public static  void  changeEmail(User user,String newEmail){
+    public static void changeEmail(User user,String newEmail){
         if(UserFunctions.isValidEmail(newEmail)==1){
             //replace in phase 2
             System.out.println("invalid Email! (email slot is empty)");
@@ -89,6 +89,7 @@ public class ProfileMenu {
             else if(tempInput.matches(Regex.CHANGE_EMAIL.regex)){
                 changeEmail(user,Regex.CHANGE_EMAIL.getGroup(tempInput,"Email"));
             }
+            //*********************************************change password**********************************************
             //more ifs
             else{
                 System.out.println("invalid input");
